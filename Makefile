@@ -12,9 +12,6 @@ install:
 run:
 	@flask --app src/app run --debug
 
-check-routes:
-	@quart --env-file .env --app src.api routes
-
 docker-run:
 	@docker compose up -d
 

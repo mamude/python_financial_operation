@@ -2,8 +2,9 @@ from dotenv import load_dotenv
 from flask import Flask
 
 from app.blueprints import customers
-from app.database import db
 from app.config import Settings
+from app.database import db
+
 
 def create_app(test_config=None) -> Flask:
     load_dotenv()
