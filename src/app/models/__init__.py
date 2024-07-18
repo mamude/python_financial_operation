@@ -23,7 +23,7 @@ class Transaction(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     payment_method: Mapped[String] = mapped_column(String(1))
     value: Mapped[Numeric] = mapped_column(Numeric(precision=10, scale=2))
-    balance: Mapped[Numeric] = mapped_column(Numeric(precision=10, scale=2))
+    balance_history: Mapped[Numeric] = mapped_column(Numeric(precision=10, scale=2))
 
     # foreignkey configuration
     account_id: Mapped[int] = mapped_column(ForeignKey("accounts.id"))

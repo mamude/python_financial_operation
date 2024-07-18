@@ -13,12 +13,12 @@ bp = Blueprint("Accounts", __name__, url_prefix="/")
 def create_account():
     data = request.get_json()
     try:
-        # validate data
+        # validate payload
         account_dto = AccountDTO(
             account_number=data["numero_conta"], balance=data["saldo"]
         )
         with current_app.app_context():
-            # fill Account object
+            # fill account object
             account = Account(
                 account_number=account_dto.account_number, balance=account_dto.balance
             )

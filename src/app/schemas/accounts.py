@@ -18,5 +18,5 @@ class AccountDTO(BaseModel):
     def account_number_must_be_unique(cls, value: str) -> str:
         q = db.session.query(Account).filter(Account.account_number == value).exists()
         if q := db.session.scalar(select(q)):
-            raise ValueError("This account already exists")
+            raise ValueError("this account already exists")
         return value
