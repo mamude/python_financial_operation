@@ -22,8 +22,8 @@ def upgrade() -> None:
     op.create_table(
         "accounts",
         sa.Column("id", sa.Integer, primary_key=True),
-        sa.Column("account_number", sa.String(50), nullable=False),
-        sa.Column("balance", sa.DECIMAL(2), nullable=False),
+        sa.Column("account_number", sa.String(50), nullable=False, unique=True),
+        sa.Column("balance", sa.DECIMAL(precision=10, scale=2), nullable=False),
     )
 
 

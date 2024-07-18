@@ -4,7 +4,7 @@ create-env:
 	@python -m venv .venv && pip install --upgrade pip && pip install poetry
 
 activate-env:
-	. .venv/bin/activate
+	@source .venv/bin/activate
 
 install:
 	@poetry install
@@ -18,5 +18,15 @@ docker-run:
 test:
 	@coverage run -m pytest
 
+coverage:
+	@coverage report
+	@coverage html
+
 migrate-up:
 	@alembic upgrade head
+
+lint:
+	@pylint src/app/*
+
+format:
+	@black src/app/*

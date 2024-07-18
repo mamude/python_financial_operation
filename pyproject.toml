@@ -25,6 +25,8 @@ pytest = "^8.2.2"
 coverage = "^7.6.0"
 isort = "^5.13.2"
 black = "^24.4.2"
+pylint = "^3.2.5"
+pytest-sugar = "^1.0.0"
 
 [build-system]
 requires = ["poetry-core"]

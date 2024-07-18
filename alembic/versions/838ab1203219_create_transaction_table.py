@@ -24,8 +24,8 @@ def upgrade() -> None:
         sa.Column("id", sa.Integer, primary_key=True),
         sa.Column("account_id", sa.Integer, nullable=False),
         sa.Column("payment_method", sa.String(1), nullable=False),
-        sa.Column("value", sa.DECIMAL(2), nullable=False),
-        sa.Column("balance", sa.DECIMAL(2), nullable=False),
+        sa.Column("value", sa.DECIMAL(precision=10, scale=2), nullable=False),
+        sa.Column("balance", sa.DECIMAL(precision=10, scale=2), nullable=False),
         sa.Column("created_at", sa.DateTime(), server_default="now()"),
         # foreign key
         sa.ForeignKeyConstraint(["account_id"], ["accounts.id"], onupdate="CASCADE", ondelete="CASCADE")
