@@ -3,7 +3,7 @@ from pydantic import ValidationError
 
 from app.database import db
 from app.helpers import handle_errors
-from app.models.accounts import Account
+from app.models import Account
 from app.schemas.accounts import AccountDTO
 
 bp = Blueprint("Accounts", __name__, url_prefix="/")

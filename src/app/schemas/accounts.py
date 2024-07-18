@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict, field_validator
 from sqlalchemy import select
 
 from app.database import db
-from app.models.accounts import Account
+from app.models import Account
 
 
 class AccountDTO(BaseModel):

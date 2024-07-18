@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from flask import Flask
 
-from app.blueprints import accounts
+from app.blueprints import accounts, transactions
 from app.config import Settings
 from app.database import db
 
@@ -22,6 +22,7 @@ def create_app(test_config=None) -> Flask:
 
     # register blueprints
     app.register_blueprint(accounts.bp)
+    app.register_blueprint(transactions.bp)
 
     return app
 
