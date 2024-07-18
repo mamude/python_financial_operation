@@ -29,8 +29,17 @@ def create_transaction():
             )
             db.session.add(transaction)
             db.session.commit()
-
-        return jsonify(transaction_dto.model_dump()), 201
+            db.session.refresh(transaction)
+            # get account updated
+            account = (
+                db.session.query(Account)
+                .where(Account.id == transaction_dto.account_id)
+                .first()
+            )
+        return (
+            jsonify({"numero_conta": account.account_number, "saldo": account.balance}),
+            201,
+        )
     except ValidationError as e:
         errors = handle_errors(e.errors())
         return jsonify(errors), 401

@@ -3,29 +3,23 @@ from decimal import Decimal
 def test_create_debit_transaction(client):
     data = {"forma_pagamento": "D", "numero_conta": "234", "valor": "10"}
     response = client.post("/transacao", json=data).json
-    balance = round(Decimal(response["balance"]), 2)
+    balance = round(Decimal(response["saldo"]), 2)
     assert balance == Decimal("170.07")
-    assert response["payment_method"] == "D"
-    assert response["account_number"] == "234"
-    assert response["value"] == "10"
+    assert response["numero_conta"] == "234"
 
 def test_create_credit_transaction(client):
     data = {"forma_pagamento": "C", "numero_conta": "234", "valor": "10"}
     response = client.post("/transacao", json=data).json
-    balance = round(Decimal(response["balance"]), 2)
+    balance = round(Decimal(response["saldo"]), 2)
     assert balance == Decimal("169.87")
-    assert response["payment_method"] == "C"
-    assert response["account_number"] == "234"
-    assert response["value"] == "10"
+    assert response["numero_conta"] == "234"
 
 def test_create_pix_transaction(client):
     data = {"forma_pagamento": "P", "numero_conta": "234", "valor": "10"}
     response = client.post("/transacao", json=data).json
-    balance = round(Decimal(response["balance"]), 2)
+    balance = round(Decimal(response["saldo"]), 2)
     assert balance == Decimal("170.37")
-    assert response["payment_method"] == "P"
-    assert response["account_number"] == "234"
-    assert response["value"] == "10"
+    assert response["numero_conta"] == "234"
 
 
 def test_create_transaction_when_account_not_exists(client):

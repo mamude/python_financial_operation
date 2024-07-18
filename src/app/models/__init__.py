@@ -13,7 +13,7 @@ class Account(db.Model):
 
     # foreignkey configuration
     transactions: Mapped[list["Transaction"]] = db.relationship(
-        "Transaction", back_populates="account"
+        back_populates="account"
     )
 
 
@@ -27,6 +27,4 @@ class Transaction(db.Model):
 
     # foreignkey configuration
     account_id: Mapped[int] = mapped_column(ForeignKey("accounts.id"))
-    account: Mapped["Account"] = db.relationship(
-        "Account", back_populates="transactions"
-    )
+    account: Mapped["Account"] = db.relationship(back_populates="transactions")
