@@ -15,8 +15,8 @@ class PaymentMethod(str, Enum):
 
 
 class Taxes(Decimal, Enum):
-    TaxCreditCard = 0.50
-    TaxDebitCard = 0.30
+    CreditCard = 0.50
+    DebitCard = 0.30
 
 
 class TransactionDTO(BaseModel):
@@ -44,9 +44,9 @@ class TransactionDTO(BaseModel):
         # check payment method and make calculation
         payment_method = PaymentMethod(self.payment_method)
         if payment_method.value == "D":
-            account.balance = (account.balance - self.value) - Taxes.TaxDebitCard
+            account.balance = (account.balance - self.value) - Taxes.DebitCard
         if payment_method.value == "C":
-            account.balance = (account.balance - self.value) - Taxes.TaxCreditCard
+            account.balance = (account.balance - self.value) - Taxes.CreditCard
         if payment_method.value == "P":
             account.balance = account.balance - self.value
 

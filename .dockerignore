@@ -1,0 +1,16 @@
+.idea/
+.vscode/
+.git/
+.venv/
+.pytest_cache/
+__pycache__/
+htmlcov/
+.env
+.gitignore
+.dockerignore
+.pylintrc
+.coverage
+Dockerfile
+docker-compose.yml
+Makefile
+README.md

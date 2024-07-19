@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "5c9fc2de-1d1b-4548-b064-a8901f14974f",
+		"name": "financial transaction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1830601"
+	},
+	"item": [
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numero_conta\": \"234\",\r\n    \"saldo\": \"180.37\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/conta",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"conta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"forma_pagamento\": \"D\",\r\n    \"numero_conta\": \"234\",\r\n    \"valor\": \"10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/transacao",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get account by number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/conta?numero_conta=234",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"conta"
+					],
+					"query": [
+						{
+							"key": "numero_conta",
+							"value": "234"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
